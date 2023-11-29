@@ -19,12 +19,14 @@ docker run --name fullcycle-rocks elijames/fullcycle-rocks
 - Faça o clone do projeto:
 
 ```
-git clone 
+git clone https://github.com/eljames/docker-fullcycle.git
+cd docker-fullcycle
+
 ```
 
-- Digite o comando
+- Digite o comando a seguir para rodar as aplicações:
 ```
-docker compose -f ./node-proxy/docker-compose.yaml up
+docker compose --project-directory ./node-proxy up --build
 ```
 
-Deve ser acessível no endereço http://localhost:8080
+Deve estar acessível no endereço http://localhost:8080

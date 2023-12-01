@@ -28,7 +28,7 @@ app.get('/', async (req, res) => {
   try {
     const personName = uniqueNamesGenerator(dictionaryConfig); // big-donkey
     await conn.promise().execute('insert into people(name) values(?)', [personName]);
-    res.send('<h1>Full Cycle Rocks!</h1><p>' + await getNames() + '</p>');
+    res.send('<h1>Full Cycle Rocks.</h1><p>' + await getNames() + '</p>');
   } catch(e) {
     res.send("Server error");
     console.error("Error on request: " + e);

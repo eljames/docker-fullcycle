@@ -1,12 +1,5 @@
-FROM node:21
+FROM node:21-slim
 EXPOSE 3000
-
-COPY ./node-start.sh /node-start.sh
-RUN chmod +x ./node-start.sh
-
-WORKDIR /node/app
-COPY ./src .
-RUN npm install
 
 ENV DOCKERIZE_VERSION v0.7.0
 
@@ -16,4 +9,13 @@ RUN wget -O - https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_
     && apt-get autoremove -yqq --purge wget && rm -rf /var/lib/apt/lists/*
 
 
-CMD [ "/node-start.sh"]
+COPY ./node-start.sh /node-start.sh
+
+RUN chmod +x ./node-start.sh
+
+WORKDIR /node/app
+COPY ./src .
+RUN npm install
+
+## Foi deixado o CMD caso o usuário não queira rodar com docker compose
+CMD ["/node-start.sh"]
